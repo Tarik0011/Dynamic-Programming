@@ -23,20 +23,19 @@ int a[mxn],b[mxn];
 void solve(){
 	int n;
 	cin>>n;
-	//multiset<int>s;
-	set<int>s;
+	vector<int>lis;
 	for(int i=1;i<=n;i++){
 		cin>>a[i];
 	}
 	for(int i=1;i<=n;i++){
-		s.insert(a[i]);
-		auto it=s.upper_bound(a[i]);
-		if(it!=s.end()){
-			s.erase(it);
+		auto lb = lower_bound(lis.begin(),lis.end(),a[i]);
+		if(lb==lis.end()){
+			lis.pb(a[i]);
+		}else{
+			*lb=a[i];
 		}
 	}
-	cout<<s.size()<<endl;
-	for(auto x:s)cout<<x<<' ';
+	for(auto x:lis)cout<<x<<' ';
 	cout<<endl;
 
 }
