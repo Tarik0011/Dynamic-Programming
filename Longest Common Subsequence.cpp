@@ -31,7 +31,7 @@ int dp[1001][1001];
 int solve(int i,int j,int n,int m){
 	if(i>=n || j>=m)return 0;
 	if(dp[i][j]!=-1)return dp[i][j];
-	if(s[i]==t[j])return 1+solve(i+1,j+1,n,m);
+	if(s[i]==t[j])return dp[i][j]=1+solve(i+1,j+1,n,m);
 	int l=solve(i+1,j,n,m);
 	int r=solve(i,j+1,n,m);
 	return dp[i][j]=max(l,r);
